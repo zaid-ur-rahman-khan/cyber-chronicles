@@ -19,16 +19,18 @@ def main():
     elif choice == "2":
         username = input("Enter username: ")
         password = input("Enter password: ")
-        valid, message, phone = verify_user(username, password)
+        valid, message, _ = verify_user(username, password)
         if not valid:
             print("❌", message)
             return
 
-        print("✅ Password correct. Sending OTP to your registered number...")
-        send_otp(phone)
+        print("✅ Password correct. Sending OTP...")
+        if not send_otp(username):
+            print("❌ Could not send OTP.")
+            return
 
         otp_input = input("Enter the OTP sent to your phone: ")
-        if verify_otp(otp_input):
+        if verify_otp(username, otp_input):
             print("🎉 LOGIN SUCCESSFUL! Welcome, agent.")
         else:
             print("❌ OTP verification failed.")

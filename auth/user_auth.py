@@ -1,44 +1,55 @@
-# auth/user_auth.py
-
-import bcrypt
 import json
 import os
+import bcrypt
 
-USER_DB_FILE = "users.json"
+# Path to JSON database
+USER_DB = os.path.join(os.path.dirname(__file__), "users.json")
 
-# Load user database from JSON
+
+# Load users from JSON
 def load_users():
-    if not os.path.exists(USER_DB_FILE):
+    if not os.path.exists(USER_DB):
         return {}
-    with open(USER_DB_FILE, "r") as f:
-        return json.load(f)
+    with open(USER_DB, "r") as file:
+        return json.load(file)
 
-# Save updated user DB
+
+# Save users to JSON
 def save_users(users):
-    with open(USER_DB_FILE, "w") as f:
-        json.dump(users, f)
+    with open(USER_DB, "w") as file:
+        json.dump(users, file, indent=4)
 
+
+# Register new user
 def register_user(username, password, phone):
     users = load_users()
     if username in users:
-        return False, "User already exists."
+        return False, "❌ User already exists."
 
-    hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+    hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+
+    # pyotp secret will be added by main.py, not here
+    from pyotp import random_base32
+    otp_secret = random_base32()
+
     users[username] = {
-        "password": hashed,
-        "phone": phone
+        "password": hashed_password,
+        "phone": phone,
+        "secret": otp_secret
     }
+
     save_users(users)
     return True, "✅ Registration successful."
 
+
+# Verify login credentials
 def verify_user(username, password):
     users = load_users()
     if username not in users:
-        return False, "User not found.", None
+        return False, "❌ User not found.", None
 
-    stored_hash = users[username]["password"].encode()
-    if bcrypt.checkpw(password.encode(), stored_hash):
-        phone = users[username]["phone"]
-        return True, "Password verified.", phone
+    hashed_password = users[username]["password"].encode()
+    if bcrypt.checkpw(password.encode(), hashed_password):
+        return True, "✅ Password verified.", users[username]
     else:
-        return False, "Incorrect password.", None
+        return False, "❌ Incorrect password.", None
