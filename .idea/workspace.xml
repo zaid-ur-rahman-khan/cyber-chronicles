@@ -122,6 +122,7 @@
       <workItem from="1744901492751" duration="9000" />
       <workItem from="1745075790024" duration="10817000" />
       <workItem from="1746209977825" duration="33000" />
+      <workItem from="1747589852145" duration="842000" />
     </task>
     <servers />
   </component>
@@ -141,6 +142,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/grand_cyber_chronicles$twilio_otp.coverage" NAME="twilio_otp Coverage Results" MODIFIED="1744899701936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auth" />
-    <SUITE FILE_PATH="coverage/grand_cyber_chronicles$main.coverage" NAME="main Coverage Results" MODIFIED="1745096083549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cli" />
+    <SUITE FILE_PATH="coverage/grand_cyber_chronicles$main.coverage" NAME="main Coverage Results" MODIFIED="1747589997171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cli" />
   </component>
 </project>
