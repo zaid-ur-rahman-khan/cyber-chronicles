@@ -1,14 +1,9 @@
-{
-  "name": "messaging",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zaid-ur-rahman-khan/cyber-chronicles.git"
-  },
-  "private": true
-}
+[
+    {
+        "sender": "zaid khan",
+        "receiver": "zaid khan demo",
+        "ciphertext": "6majQlYpqCOc5zMZLtvZEMM9fprCNYFu3wTnHp0RtDkZAWx7mYEf",
+        "nonce": "yYY8MSQhyX6O9FH1",
+        "timestamp": "2025-06-30 02:34:14"
+    }
+]
