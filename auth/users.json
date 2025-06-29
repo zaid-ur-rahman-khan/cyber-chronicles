@@ -1,0 +1,14 @@
+{
+    "zaid khan demo": {
+        "password": "$2b$12$4ObzuZV7JUteZLdAxGqsqeLBADe9BlKMGUPH3aDaVEBeaSdI4izpe",
+        "phone": "+918240690867",
+        "secret": "CHE6EXKPBSZRSGCDUC5UW6MFGLACRRD3",
+        "aes_key": "On3ZLhHqwTSIs9VRCdQbjK8Gq4DmcrasmMPwjRS4Rio="
+    },
+    "zaid khan": {
+        "password": "$2b$12$aaCuZv.zi9CcV9hGHrzfteUhyTtEI9yDw3fQ5t1ujm1uW2a39Xc2C",
+        "phone": "+918240690867",
+        "secret": "LKNNDVKHSFREVPYDHZHPFNV6OXBGDVEM",
+        "aes_key": "4gXFWCNZcPRrKYxb3+QgVnawg+RCEfEdkyP4mztwFiM="
+    }
+}
