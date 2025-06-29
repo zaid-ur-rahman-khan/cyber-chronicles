@@ -1,7 +1,7 @@
 import json
 import os
 import bcrypt
-
+from crypto.encryption import generate_aes_key
 # Path to JSON database
 USER_DB = os.path.join(os.path.dirname(__file__), "users.json")
 
@@ -31,11 +31,12 @@ def register_user(username, password, phone):
     # pyotp secret will be added by main.py, not here
     from pyotp import random_base32
     otp_secret = random_base32()
-
+    aes_key = generate_aes_key()
     users[username] = {
         "password": hashed_password,
         "phone": phone,
-        "secret": otp_secret
+        "secret": otp_secret,
+        "aes_key": aes_key
     }
 
     save_users(users)
