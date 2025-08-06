@@ -25,7 +25,7 @@ def send_otp(username):
     phone = users[username]["phone"]
     totp = pyotp.TOTP(secret,interval=300)
     otp = totp.now()
-    print(f"YE LE OTP SIDE SE\t{otp}")
+    print(f"YE LO OTP SIDE SE for debugging purpose\t{otp}")
     # message = client.messages.create(
     #     body=f"🔐 Your login OTP is: {otp}",
     #     from_=FROM_NUMBER,

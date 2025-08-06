@@ -1,7 +1,9 @@
 import json
+import base64
 import os
+from pqcrypto.kem.ml_kem_512 import generate_keypair
 import bcrypt
-from crypto.encryption import generate_aes_key
+from crypto.encryption import generate_kyber_key
 # Path to JSON database
 USER_DB = os.path.join(os.path.dirname(__file__), "users.json")
 
@@ -31,12 +33,14 @@ def register_user(username, password, phone):
     # pyotp secret will be added by main.py, not here
     from pyotp import random_base32
     otp_secret = random_base32()
-    aes_key = generate_aes_key()
+#replaced old os.urandom(32) skeleton for aes key now using kyber to generate aes key
+    pub_key,pvt_key= generate_kyber_key()
     users[username] = {
+        "pvt_key": pvt_key,
+        "pub_key": pub_key,
         "password": hashed_password,
         "phone": phone,
         "secret": otp_secret,
-        "aes_key": aes_key
     }
 
     save_users(users)
