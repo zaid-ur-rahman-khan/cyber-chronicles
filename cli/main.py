@@ -4,7 +4,7 @@ from auth.user_auth import register_user, verify_user
 from auth.twilio_otp import send_otp, verify_otp
 def secure_messaging_menu(current_user):
     while True:
-        print("\n🔐 Secure Messaging Menu:")
+        print("\n Secure Messaging Menu:")
         print("1. Send a message")
         print("2. View inbox")
         print("3. Logout")
@@ -20,14 +20,14 @@ def secure_messaging_menu(current_user):
             view_inbox(current_user)
 
         elif opt == "3":
-            print("👋 Logging out...")
+            print(" Logging out...")
             break
 
         else:
-            print("❌ Invalid option. Try again.")
+            print(" Invalid option. Try again.")
 
 def main():
-    print("\n🛡️ WELCOME TO GRAND CYBER CHRONICLES - SECURE LOGIN 🛡️")
+    print("\n WELCOME TO GRAND CYBER CHRONICLES - SECURE LOGIN ")
     print("1. Register")
     print("2. Login")
     choice = input("Select option: ")
@@ -44,22 +44,22 @@ def main():
         password = input("Enter password: ")
         valid, message, _ = verify_user(username, password)
         if not valid:
-            print("❌", message)
+            print("", message)
             return
 
-        print("✅ Password correct. Sending OTP...")
+        print(" Password correct. Sending OTP...")
         if not send_otp(username):
-            print("❌ Could not send OTP.")
+            print(" Could not send OTP.")
             return
 
         otp_input = input("Enter the OTP sent to your phone: ")
         if verify_otp(username, otp_input):
-            print(f"🎉 LOGIN SUCCESSFUL! Welcome,{username} .")
+            print(f" LOGIN SUCCESSFUL! Welcome,{username} .")
             secure_messaging_menu(username)
         else:
-            print("❌ OTP verification failed.")
+            print(" OTP verification failed.")
     else:
-        print("❌ Invalid option. Try 1 or 2.")
+        print(" Invalid option. Try 1 or 2.")
 
 if __name__ == "__main__":
     main()
