@@ -25,7 +25,7 @@ In **air-gapped environments and on shared terminals**, a limited secure mechani
 
 6.**Audit Trail**: The system includes a lightweight **audit trail** that tags messages with metadata like timestamps, sender, and receiver to ensure accountability
 
-## 🛠️ The CipherShift Workflow:
+## The CipherShift Workflow:
 
 **The key steps in the process are:**
 
