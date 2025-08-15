@@ -42,7 +42,7 @@ def derive_aes_key(shared_secret: bytes) -> bytes:
 def send_message(sender, receiver, plaintext):
     users = load_users()
     if receiver not in users:
-        return False, "❌ Receiver not found."
+        return False, " Receiver not found."
 #here receiver_key is actually kyber public key
     receiver_key = users[receiver]["pub_key"]
     receiver_public_key = base64.b64decode(receiver_key)
@@ -65,7 +65,7 @@ def send_message(sender, receiver, plaintext):
     messages.append(new_message)
     save_messages(messages)
 
-    return True, "✅ Message encrypted and sent securely."
+    return True, " Message encrypted and sent securely."
 
 # View messages sent TO the logged-in user
 def view_inbox(username):
@@ -80,13 +80,13 @@ def view_inbox(username):
     inbox = [m for m in messages if m["receiver"] == username]
 
     if not inbox:
-        print("📭 Your inbox is empty.")
+        print(" Your inbox is empty.")
         return
 
-    print(f"\n📥 INBOX for {username}:\n" + "-"*30)
+    print(f"\n INBOX for {username}:\n" + "-"*30)
     for msg in inbox:
         decrypted = decrypt_message({
             "ciphertext": msg["ciphertext"],
             "nonce": msg["nonce"], "kyber_cipher_text": msg["kyber_cipher_text"],
         }, kyber_pvt_key)
-        print(f"🕒 {msg['timestamp']} | 🧑 From: {msg['sender']}\n📨 {decrypted}\n")
+        print(f"🕒 {msg['timestamp']} |  From: {msg['sender']}\n {decrypted}\n")
