@@ -26,7 +26,7 @@ def save_users(users):
 def register_user(username, password, phone):
     users = load_users()
     if username in users:
-        return False, "❌ User already exists."
+        return False, " User already exists."
 
     hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
@@ -44,17 +44,17 @@ def register_user(username, password, phone):
     }
 
     save_users(users)
-    return True, "✅ Registration successful."
+    return True, " Registration successful."
 
 
 # Verify login credentials
 def verify_user(username, password):
     users = load_users()
     if username not in users:
-        return False, "❌ User not found.", None
+        return False, " User not found.", None
 
     hashed_password = users[username]["password"].encode()
     if bcrypt.checkpw(password.encode(), hashed_password):
-        return True, "✅ Password verified.", users[username]
+        return True, " Password verified.", users[username]
     else:
-        return False, "❌ Incorrect password.", None
+        return False, " Incorrect password.", None
