@@ -18,7 +18,7 @@ client = Client(ACCOUNT_SID, AUTH_TOKEN)
 def send_otp(username):
     users = load_users()
     if username not in users:
-        print("❌ User not found.")
+        print(" User not found.")
         return False
 
     secret = users[username]["secret"]
@@ -27,12 +27,12 @@ def send_otp(username):
     otp = totp.now()
     print(f"YE LO OTP SIDE SE for debugging purpose\t{otp}")
     # message = client.messages.create(
-    #     body=f"🔐 Your login OTP is: {otp}",
+    #     body=f" Your login OTP is: {otp}",
     #     from_=FROM_NUMBER,
     #     to=phone
     # )
 
-    print("📤 OTP sent via SMS.")
+    print(" OTP sent via SMS.")
     return True
 
 # Verify entered OTP
